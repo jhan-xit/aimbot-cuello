@@ -1,4 +1,4 @@
-name: Build Tweak
+name: Build
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -7,10 +7,15 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup Theos
         uses: target/setup-theos@v1
+      - name: Download SDK
+        run: |
+          curl -LO https://github.com/theos/sdks/raw/master/iPhoneOS14.5.sdk.tar.xz
+          mkdir -p $THEOS/sdks
+          tar -xf iPhoneOS14.5.sdk.tar.xz -C $THEOS/sdks
       - name: Build
         run: make package FINALPACKAGE=1
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: MiDylib
+          name: MiHack
           path: .theos/obj/debug/*.dylib
