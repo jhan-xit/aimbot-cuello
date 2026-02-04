@@ -1,0 +1,7 @@
+Package: com.jhan.cuello
+Name: AimbotCuello
+Depends: mobilesubstrate
+Version: 1.120.1
+Architecture: iphoneos-arm
+Description: Hack Cuello para FF
+Maintainer: jhan
